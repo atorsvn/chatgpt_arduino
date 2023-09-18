@@ -5,9 +5,10 @@ Proof of concept or some junk!
 
 ## Installation
 Just do
-```git clone https://github.com/atorsvn/chatgpt_arduino.git```
-and
-```pip install -r requirements.txt```
+```
+git clone https://github.com/atorsvn/chatgpt_arduino.git
+pip install -r requirements.txt
+```
 
 ## Run it
 ```app.py```
