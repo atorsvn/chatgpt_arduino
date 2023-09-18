@@ -12,3 +12,6 @@ pip install -r requirements.txt
 
 ## Run it
 ```python app.py```
+Then connect to this dev plugin the way that you would any other via
+```localhost:5003``` 
+In the ChatGPT WebUI
