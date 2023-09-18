@@ -7,11 +7,14 @@ Proof of concept or some junk!
 Just do
 ```
 git clone https://github.com/atorsvn/chatgpt_arduino.git
+cd chatgpt_arduino
 pip install -r requirements.txt
 ```
 
 ## Run it
-```python app.py```
+```
+python app.py
+```
 Then connect to this dev plugin the way that you would any other via
 ```localhost:5003``` 
 In the ChatGPT WebUI
