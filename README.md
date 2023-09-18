@@ -11,4 +11,4 @@ pip install -r requirements.txt
 ```
 
 ## Run it
-```app.py```
+```python app.py```
