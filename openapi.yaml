@@ -1,0 +1,77 @@
+openapi: 3.0.1
+info:
+  title: Arduino Controller Plugin
+  description: A plugin that allows the user to control an Arduino Uno using ChatGPT.
+  version: 'v1'
+servers:
+  - url: http://localhost:5003
+paths:
+  /arduino/pinmode/{pin}/{mode}:
+    post:
+      operationId: setPinMode
+      summary: Set the mode for a given pin
+      parameters:
+      - in: path
+        name: pin
+        schema:
+            type: integer
+        required: true
+        description: The pin number.
+      - in: path
+        name: mode
+        schema:
+            type: string
+        required: true
+        description: The mode ('o' for output or 'i' for input).
+      responses:
+        "200":
+          description: OK
+
+  /arduino/write/digital/{pin}/{value}:
+    post:
+      operationId: writeDigital
+      summary: Write a digital value to a given pin
+      parameters:
+      - in: path
+        name: pin
+        schema:
+            type: integer
+        required: true
+        description: The pin number.
+      - in: path
+        name: value
+        schema:
+            type: integer
+        required: true
+        description: The value (0 or 1).
+      responses:
+        "200":
+          description: OK
+
+  /arduino/read/digital/{pin}:
+    get:
+      operationId: readDigital
+      summary: Read a digital value from a given pin
+      parameters:
+      - in: path
+        name: pin
+        schema:
+            type: integer
+        required: true
+        description: The pin number.
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/readDigitalResponse'
+
+components:
+  schemas:
+    readDigitalResponse:
+      type: object
+      properties:
+        value:
+          type: integer
+          description: The digital value read from the pin.
