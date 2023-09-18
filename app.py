@@ -50,26 +50,6 @@ async def read_digital(pin):
     value = arduino.read_digital(pin)
     return quart.Response(response=json.dumps({"value": value}), status=200)
 
-@app.post("/todos/<string:username>")
-async def add_todo(username):
-    request_data = await quart.request.get_json(force=True)
-    if username not in _TODOS:
-        _TODOS[username] = []
-    _TODOS[username].append(request_data["todo"])
-    return quart.Response(response='OK', status=200)
-
-@app.get("/todos/<string:username>")
-async def get_todos(username):
-    return quart.Response(response=json.dumps(_TODOS.get(username, [])), status=200)
-
-@app.delete("/todos/<string:username>")
-async def delete_todo(username):
-    request_data = await quart.request.get_json(force=True)
-    todo_idx = request_data["todo_idx"]
-    if 0 <= todo_idx < len(_TODOS[username]):
-        _TODOS[username].pop(todo_idx)
-    return quart.Response(response='OK', status=200)
-
 @app.get("/logo.png")
 async def plugin_logo():
     filename = 'logo.png'
